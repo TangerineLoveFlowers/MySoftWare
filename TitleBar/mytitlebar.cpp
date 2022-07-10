@@ -18,7 +18,9 @@ MyTitleBar::~MyTitleBar()
 
 }
 
-void MyTitleBar::onClicked()
+
+
+void MyTitleBar::onTitleClicked()
 {
 
 }
@@ -98,7 +100,7 @@ void MyTitleBar::initTitleBar()
 
 void MyTitleBar::initSingleSlot()
 {
-    connect(m_pMinimizeButton, &QPushButton::clicked, this, &MyTitleBar::onClicked);
-    connect(m_pMaximizeButton,  &QPushButton::clicked, this, &MyTitleBar::onClicked);
-    connect(m_pCloseButton,  &QPushButton::clicked, this, &MyTitleBar::onClicked);
+    connect(m_pMinimizeButton, &QPushButton::clicked, this, &MyTitleBar::onTitleClicked);
+    connect(m_pMaximizeButton,  &QPushButton::clicked, this, &MyTitleBar::onTitleClicked);
+    connect(m_pCloseButton,  &QPushButton::clicked, this, &MyTitleBar::onTitleClicked);
 }

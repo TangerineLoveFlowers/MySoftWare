@@ -15,8 +15,10 @@ public:
 
 signals:
 
-public: slots
-    void onClicked();
+
+public slots:
+
+    void onTitleClicked();
 
 public:
     void setIconSize(int w,int h);
