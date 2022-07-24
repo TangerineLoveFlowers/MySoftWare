@@ -2,11 +2,13 @@
 #define MYTITLEBAR_H
 
 #include <QWidget>
+#include "AbsFrameLessAutoSize.h"
+
 class QPushButton;
 class QLabel;
 class QSize;
 
-class MyTitleBar : public QWidget
+class MyTitleBar : public AbsFrameLessAutoSize
 {
     Q_OBJECT
 public:
@@ -35,11 +37,21 @@ private:
 
     QLabel *m_pIconLable;
     QLabel *m_pTitleLable;
+    QSize m_IconSize;
+    AbsFrameLessAutoSize *m_AbsFrameLessAutoSize;
 
+    //QPoint m_movePoint_Z;
 private:
 
-    QSize m_IconSize;
 
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event)override;
+//    void mouseDoubleClickEvent(QMouseEvent *event)override;
+    void mouseMoveEvent(QMouseEvent *event)override;
+
+
+//    QPoint last;
+//                 //鼠标移动
 
 };
 

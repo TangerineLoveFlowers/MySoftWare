@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     Software w;
     w.show();
 
-    MyTitleBar *mt=new MyTitleBar();
-    mt->show();
+    //MyTitleBar *mt=new MyTitleBar();
+    //mt->show();
     return a.exec();
 }

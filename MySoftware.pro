@@ -27,5 +27,11 @@ DISTFILES +=
 INCLUDEPATH +=$$PWD TitleBar
 include($$PWD/TitleBar/mytitlebar.pri)
 
+INCLUDEPATH +=$$PWD MiddleWidget
+include ($$PWD/MiddleWidget/middleWidget.pri)
+
+INCLUDEPATH +=$$PWD Common
+include ($$PWD/Common/common.pri)
+
 RESOURCES += \
     main.qrc

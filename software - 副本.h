@@ -5,9 +5,6 @@
 
 
 class QVBoxLayout;
-class MyTitleBar;
-class MiddleWidget;
-
 class Software : public QWidget
 {
     Q_OBJECT
@@ -17,15 +14,9 @@ public:
     ~Software();
 
 private:
-    void initUI();
-
-private:
     QWidget *m_showWidget;
-    //QWidget *m_titleBar;
-    MyTitleBar *m_titleBar;
-
-    //QWidget *m_middleWidget;
-    MiddleWidget*m_middleWidget;
+    QWidget *m_titleBar;
+    QWidget *m_middleWidget;
 
     QVBoxLayout *m_shadowLayout;
     QVBoxLayout *m_showWidgetLayout;

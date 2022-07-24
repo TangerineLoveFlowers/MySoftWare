@@ -3,13 +3,20 @@
 #include <QPushButton>
 #include <QSize>
 #include <QHBoxLayout>
+#include <QMouseEvent>
+#include <QApplication>
+#include <QDebug>
 
-MyTitleBar::MyTitleBar(QWidget *parent) : QWidget(parent)
+MyTitleBar::MyTitleBar(QWidget *parent)
 {
     setWindowFlags(Qt::FramelessWindowHint | windowFlags());//隐藏默认标题栏
     //setAttribute(Qt::WA_TranslucentBackground, true);//背景透明
-    installEventFilter(this);//标题栏安装事件过滤器
+    this->installEventFilter(parent);//标题栏安装事件过滤器
     initTitleBar();
+
+
+
+  //  m_maxRect = QApplication::desktop()->avaliableGeometry();
     initSingleSlot();
 }
 
@@ -96,6 +103,8 @@ void MyTitleBar::initTitleBar()
     pLayout->addSpacing(1);
     pLayout->setContentsMargins(5,0,5,0);
     setLayout(pLayout);
+
+    m_AbsFrameLessAutoSize = new AbsFrameLessAutoSize(this);
 }
 
 void MyTitleBar::initSingleSlot()
@@ -104,3 +113,40 @@ void MyTitleBar::initSingleSlot()
     connect(m_pMaximizeButton,  &QPushButton::clicked, this, &MyTitleBar::onTitleClicked);
     connect(m_pCloseButton,  &QPushButton::clicked, this, &MyTitleBar::onTitleClicked);
 }
+
+void MyTitleBar::mousePressEvent(QMouseEvent *event)
+{
+        qDebug()<<__FUNCTION__;
+    //QWidget::mousePressEvent(event);
+      m_AbsFrameLessAutoSize->mousePressEvent(event);
+//    QPoint y=event->globalPos();//鼠标相对于桌面左上角的位置
+//    QPoint x =this->geometry().topLeft();
+//    this->m_movePoint_Z=y-x;//定值不变
+
+}
+
+void MyTitleBar::mouseReleaseEvent(QMouseEvent *event)
+{
+    m_AbsFrameLessAutoSize->mouseReleaseEvent(event);
+   // QWidget::mouseReleaseEvent(event);
+//    this->m_movePoint_Z=QPoint();
+
+
+
+}
+
+//void MyTitleBar::mouseDoubleClickEvent(QMouseEvent *event)
+//{
+//    QWidget::mouseDoubleClickEvent(event);
+//}
+
+void MyTitleBar::mouseMoveEvent(QMouseEvent *event)
+{
+    m_AbsFrameLessAutoSize->mouseMoveEvent(event);
+   // QWidget::mouseMoveEvent(event);
+//    QPoint y=event->globalPos();
+//    QPoint x=y-this->m_movePoint_Z;
+//    move(x);
+
+}
+
